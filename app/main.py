@@ -10,16 +10,11 @@ class PredictionRequest(BaseModel):
 
 @app.get("/")
 def read_root():
-    """Health check endpoint."""
     return {"message": "Flight Delay Prediction Service is running"}
 
 @app.post("/predict")
 def predict(request: PredictionRequest):
-    """
-    Predicts (or processes) flight data.
-    In this homework context, it applies the feature engineering logic.
-    """
-    airport_bucket = hash_airport(request.airport_code, buckets=100) # Using 100 as per unit test requirement hint
+    airport_bucket = hash_airport(request.airport_code, buckets=100)
     delay_category = bucket_delay(request.delay_minutes)
     
     return {

@@ -2,18 +2,12 @@ import time
 import requests
 import sys
 
-# URL of the service to test
 URL = "http://localhost:80/predict"
 HEALTH_URL = "http://localhost:80/"
 
 def smoke_test():
-    """
-    Waits for the service to be ready and then sends a test request.
-    This simulates a deployment verification test.
-    """
     print("Beginning smoke test...")
     
-    # Retry logic to wait for container to be ready
     max_retries = 10
     for i in range(max_retries):
         try:
@@ -28,7 +22,6 @@ def smoke_test():
         print("Service failed to start or is not reachable.")
         sys.exit(1)
 
-    # Test prediction endpoint
     payload = {
         "airport_code": "AMS",
         "delay_minutes": 10.0
