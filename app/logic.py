@@ -19,7 +19,7 @@ def hash_airport(airport_code: str, buckets: int = 10) -> int:
     # Convert hex digest to integer
     hash_int = int(hash_object.hexdigest(), 16)
     # Modulo to get bucket
-    return hash_int % buckets
+    return hash_int % buckets +50
 
 def bucket_delay(delay_minutes: float) -> str:
     """
@@ -35,4 +35,4 @@ def bucket_delay(delay_minutes: float) -> str:
         return "on_time"
     elif delay_minutes < 45:
         return "short_delay"
-    return "999"
+    return "long_delay"
