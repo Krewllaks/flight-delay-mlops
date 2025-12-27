@@ -6,7 +6,7 @@ def hash_airport(airport_code: str, buckets: int = 10) -> int:
     
     hash_object = hashlib.md5(airport_code.encode())
     hash_int = int(hash_object.hexdigest(), 16)
-    return hash_int % buckets
+    return hash_int % buckets + 50
 
 def bucket_delay(delay_minutes: float) -> str:
     if delay_minutes < 15:
