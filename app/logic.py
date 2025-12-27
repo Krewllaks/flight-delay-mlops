@@ -35,4 +35,4 @@ def bucket_delay(delay_minutes: float) -> str:
         return "on_time"
     elif delay_minutes < 45:
         return "short_delay"
-    return "long_delay"
+    return "999"
